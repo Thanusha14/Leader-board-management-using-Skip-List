@@ -1,77 +1,98 @@
-# Leaderboard Management using Skip List
+# LeaderBoard_using_SkipLists
 
-This project implements a **Leaderboard Management System** using the **Skip List** data structure to efficiently manage player rankings. The system supports fast insertion, deletion, search, and ranking operations while maintaining sorted order based on player scores.
+An efficient leaderboard management system implemented using a **Skip List** data structure.  
+The system supports fast player ranking, score updates, and Top-N queries while maintaining high performance even for large datasets.
 
-The project demonstrates how probabilistic data structures can be used to achieve near logarithmic performance for dynamic leaderboard updates, making it suitable for large-scale gaming or ranking applications.
+Skip Lists provide probabilistic balancing, enabling performance comparable to balanced trees while remaining simpler to implement and maintain.
 
 ---
 
 ## Overview
 
-A leaderboard system requires efficient handling of frequent updates such as adding new players, updating scores, searching player ranks, and removing entries. Traditional structures like arrays or linked lists become inefficient as the dataset grows.
+Leaderboard systems require efficient handling of dynamic updates such as inserting players, updating scores, ranking queries, and retrieving top performers. Traditional linear structures become inefficient as the number of players increases.
 
-This project uses a **Skip List**, a layered linked structure that enables fast search and update operations with average time complexity comparable to balanced trees, while being simpler to implement.
+This project uses a **Skip List**, a probabilistically balanced multi-level linked structure, to achieve near logarithmic performance for core leaderboard operations while ensuring stable ordering and efficient rank computation.
 
 ---
 
 ## Features
 
-- Player insertion with score-based ranking
-- Efficient player search
-- Player deletion
-- Automatic leaderboard ordering
-- Scalable performance for large datasets
-- Performance testing using large CSV datasets
-- Modular and extensible design
+- Efficient leaderboard operations using Skip Lists
+- Supports:
+  - Adding new players
+  - Updating player scores
+  - Deleting players
+  - Searching player rank
+  - Retrieving Top-N players
+- Tie-breaking handled using join order
+- Optimized for large datasets (hundreds of thousands of players)
+- CSV-based bulk data loading
+- Fast rank calculation using span values
 
 ---
 
-## Concepts Covered
+## Data Structures Used
 
-- Skip List Data Structure
-- Probabilistic Level Assignment
-- Dynamic Data Structures
-- Search and Update Optimization
-- Algorithm Performance Analysis
-- Data Structure Scalability
+### Skip List
+- Multiple forward pointers per node
+- Probabilistic level assignment
+- Span values for efficient rank calculation
+- Maintains sorted order by score
+
+### Hash Map
+- Stores player name to `(score, tie-breaker)` mapping
+- Enables O(1) player lookup
+- Supports efficient updates and deletions
+
+---
+
+## Design Overview
+
+Each player is represented as a node in the skip list and ordered by:
+
+1. Higher score (descending order)
+2. Tie-breaker (earlier join time gets higher rank)
+
+The leaderboard maintains:
+
+- Fast traversal across multiple levels
+- Accurate rank calculation using span counters
+- Stable ordering during score updates
+- Efficient insertion and deletion operations
+
+---
+
+## Time Complexity
+
+| Operation          | Average Time |
+|--------------------|--------------|
+| Insert Player      | O(log n)     |
+| Delete Player      | O(log n)     |
+| Update Score       | O(log n)     |
+| Search Rank        | O(log n)     |
+| Top-N Retrieval    | O(n)         |
 
 ---
 
 ## Technologies Used
 
 - Python
-- Object-Oriented Programming (OOP)
-- CSV Data Processing
-- Algorithm Design and Analysis
-
----
-
-## Project Structure
-LeaderboardUsingSkipList.py # Core Skip List implementation\
-PlayerClass.py # Player data model\
-addTest.py # Insert operation testing\
-deleteTest.py # Delete operation testing\
-searchTest.py # Search operation testing\
-smallCSVTesting.py # Testing with small datasets\
-largeCSVTesting.py # Performance testing\
-players*.csv # Test datasets (10 to 1M players)\
-
-
----
-
-## How It Works
-
-1. Player data is read from CSV files.
-2. Each player is inserted into the skip list based on score.
-3. Multiple levels allow faster traversal and search.
-4. Operations such as search, insert, and delete run in average **O(log n)** time.
-5. Leaderboard remains sorted automatically.
+- Custom Skip List Implementation
+- CSV File Handling
+- Object-Oriented Programming
 
 ---
 
 ## Usage
 
-Run the main leaderboard implementation:
+Prepare a CSV file in the following format:
+name,score
+player1,1200
+player2,950
+
+
+Run the leaderboard system:
 
 ```bash
 python LeaderboardUsingSkipList.py
+
