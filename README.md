@@ -88,7 +88,7 @@ The leaderboard maintains:
 Prepare a CSV file in the following format:
 name,score\
 player1,1200\
-player2,950\
+player2,950
 
 
 Run the leaderboard system:
