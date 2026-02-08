@@ -86,9 +86,9 @@ The leaderboard maintains:
 ## Usage
 
 Prepare a CSV file in the following format:
-name,score
-player1,1200
-player2,950
+name,score\
+player1,1200\
+player2,950\
 
 
 Run the leaderboard system:
