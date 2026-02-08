@@ -47,14 +47,14 @@ This project uses a **Skip List**, a layered linked structure that enables fast 
 ---
 
 ## Project Structure
-LeaderboardUsingSkipList.py # Core Skip List implementation
-PlayerClass.py # Player data model
-addTest.py # Insert operation testing
-deleteTest.py # Delete operation testing
-searchTest.py # Search operation testing
-smallCSVTesting.py # Testing with small datasets
-largeCSVTesting.py # Performance testing
-players*.csv # Test datasets (10 to 1M players)
+LeaderboardUsingSkipList.py # Core Skip List implementation\
+PlayerClass.py # Player data model\
+addTest.py # Insert operation testing\
+deleteTest.py # Delete operation testing\
+searchTest.py # Search operation testing\
+smallCSVTesting.py # Testing with small datasets\
+largeCSVTesting.py # Performance testing\
+players*.csv # Test datasets (10 to 1M players)\
 
 
 ---
